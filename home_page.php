@@ -39,14 +39,6 @@
             <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <button class="nav-link" data-bs-toggle="pill" data-bs-target="#query1" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Query 1</button>
                 <button class="nav-link" data-bs-toggle="pill" data-bs-target="#query2" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Query 2</button>
-                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#query3" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Query 3</button>
-                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#query4" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Query 4</button>
-                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#query5" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Query 5</button>
-                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#query6" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Query 6</button>
-                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#query7" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Query 7</button>
-                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#query8" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Query 8</button>
-                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#query9" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Query 9</button>
-                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#query10" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Query 10</button>
                 <!-- <button class="nav-link" data-bs-toggle="pill" data-bs-target="#query11" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Query 11</button>
                 <button class="nav-link" data-bs-toggle="pill" data-bs-target="#query12" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Query 12</button>
                 <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tables" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Display Tables</button> -->
@@ -177,46 +169,6 @@
         }
 
         #query2 h3 {
-            border-bottom: 0.5px solid lightgrey;
-            padding-bottom: 20px;
-        }
-
-        #query3 h3 {
-            border-bottom: 0.5px solid lightgrey;
-            padding-bottom: 20px;
-        }
-
-        #query4 h3 {
-            border-bottom: 0.5px solid lightgrey;
-            padding-bottom: 20px;
-        }
-
-        #query5 h3 {
-            border-bottom: 0.5px solid lightgrey;
-            padding-bottom: 20px;
-        }
-
-        #query6 h3 {
-            border-bottom: 0.5px solid lightgrey;
-            padding-bottom: 20px;
-        }
-
-        #query7 h3 {
-            border-bottom: 0.5px solid lightgrey;
-            padding-bottom: 20px;
-        }
-
-        #query8 h3 {
-            border-bottom: 0.5px solid lightgrey;
-            padding-bottom: 20px;
-        }
-
-        #query9 h3 {
-            border-bottom: 0.5px solid lightgrey;
-            padding-bottom: 20px;
-        }
-
-        #query10 h3 {
             border-bottom: 0.5px solid lightgrey;
             padding-bottom: 20px;
         }
