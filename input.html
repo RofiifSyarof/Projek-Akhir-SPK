@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABC Foundation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <h3>Input Data</h3>
+    </div>
+
+    <div class="navbar">
+        <div class="navbar-header">
+            <div class="navbar-header-logo">
+                <img src="Logo1.png" height="40%" width="40%">
+            </div>
+            <h2>ABC Foundation</h2>
+        </div>
+        <form action="homepage.html">
+			<button class="navbar-menu-btn" name="Gohome">Home</button></a>
+		</form>
+        <form action="input.html">
+			<button class="navbar-menu-btn" name="Goinput">Input and Process Data</button></a>
+		</form>
+    </div>
+
+    <div class="main-content">
+        <div class="bluebox">
+            <div class="bluebox-header">
+                <h3>Input Applicant's Data Assessment</h3>
+            </div>
+            <div class="bluebox-body">
+                <table class="newData">
+                    <form action="" method="post">
+                        <tr>
+                            <td><label class="form-label">Name</label></td>
+                            <td><input type="text" class="form-field" name="Nama" required size="100" pattern="[A-Za-z ]+" required></td>
+                        </tr>
+                        
+                        <tr>
+                            <td><label class="form-label">Education</label></td>
+                            <td><input type="text" class="form-field" name="ED" required size="2" required></td>
+                        </tr>
+        
+                        <tr>
+                            <td><label class="form-label">Work Experience</label></td>
+                            <td><input type="text" class="form-field" name="WE" required size="2" required></td>
+                        </tr>
+        
+                        <tr>
+                            <td><label class="form-label">Technical Skills</label></td>
+                            <td><input type="text" class="form-field" name="TS" required size="2" required></td>
+                        </tr>
+        
+                        <tr>
+                            <td><label class="form-label">Interpersonal Skills</label></td>
+                            <td><input type="text" class="form-field" name="IS" required size="2" required></td>
+                        </tr>
+                        <tr>
+                            <td><label class="form-label">Analytical Skills</label></td>
+                            <td><input type="text" class="form-field" name="AS" required size="2" required></td>
+                        </tr>
+                        <tr>
+                            <td><label class="form-label">Discipline</label></td>
+                            <td><input type="text" class="form-field" name="DS" required size="2" required></td>
+                        </tr>
+                </table>
+                    <!-- Tombol Submit -->
+	                <button type="submit" class="SubmitBtn" name="SumbitData">Submit</button>
+            </div>
+        </div>
+
+<!-- TABEL LIST PELAMAR ------------------------------------------------------------------ -->
+        <div class="bluebox">
+            <div class="bluebox-header">
+                <h3>List of Applicants</h3>
+            </div>
+            <div class="bluebox-body">
+                <table class="tableblue" cellpadding="9" cellspacing="1" width="1350px" align="center">
+                    <tr class="table-tr">
+                        <th class="table-th">Menu</th>
+                        <th class="table-th">Applicant Name</th>
+                        <th class="table-th">ED</th>
+                        <th class="table-th">WE</th>
+                        <th class="table-th">TS</th>
+                        <th class="table-th">IS</th>
+                        <th class="table-th">AS</th>
+                        <th class="table-th">DS</th>
+                        <th class="table-th">Total</th>
+                    </tr>
+        
+                    <tr class="table-tr">
+                        <td>
+                            <!-- Tombol Edit -->
+                            <form>
+                                <button type="submit" class="menubtn" name="edit">Edit</button>
+                            </form>
+                            <!-- Tombol Delete -->
+                            <form>
+                                <button type="submit" class="menubtn" name="delete">Delete</button>
+                            </form>
+                        </td>
+                        <td>Garox</td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>30</td>
+                    </tr>
+                </table>
+                <div class="totalweightwj">
+                    <h4>Total Criteria Weight : (critweight)</h4>
+                    <h4>Total Wj : (Wj)</h4>
+                </div>
+
+            </div>
+        </div>
+
+<!-- TABEL BOBOT KRITERIA --------------------------------------------------------------- -->
+        <div class="bluebox">
+            <div class="bluebox-header">
+                <h3>Criteria Weight Information</h3>
+            </div>
+            <div class="bluebox-body">
+                <table class="tableblue" cellpadding="9" cellspacing="1" width="1350px" align="center">
+                    <tr class="table-tr">
+                        <th class="table-th">Criteria</th>
+                        <th class="table-th">Criteria Weight</th>
+                        <th class="table-th">Wj</th>
+                        <th class="table-th">Cost/Benefit</th>
+                    </tr>
+        
+                    <tr class="table-tr">
+                        <td>Education ED</td>
+                        <td>3</td>
+                        <td>0.000</td>
+                        <td>Benefit</td>
+                    </tr>
+                    <tr class="table-tr">
+                        <td>Work Experience WE</td>
+                        <td>4</td>
+                        <td>0.000</td>
+                        <td>Benefit</td>
+                    </tr>
+                    <tr class="table-tr">
+                        <td>Technical Skills TS</td>
+                        <td>5</td>
+                        <td>0.000</td>
+                        <td>Benefit</td>
+                    </tr>
+                    <tr class="table-tr">
+                        <td>Interpersonal Skills IS</td>
+                        <td>4</td>
+                        <td>0.00</td>
+                        <td>Benefit</td>
+                    </tr>
+                    <tr class="table-tr">
+                        <td>Analytical Skills AS</td>
+                        <td>4</td>
+                        <td>0.000</td>
+                        <td>Benefit</td>
+                    </tr>
+                    <tr class="table-tr">
+                        <td>Discipline DS</td>
+                        <td>3</td>
+                        <td>0.000</td>
+                        <td>Benefit</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+<!-- TABEL Perhitungan Vektor Si --------------------------------------------------------- -->
+        <div class="bluebox">
+            <div class="bluebox-header">
+                <h3>Si Vector Calculation</h3>
+            </div>
+            <div class="bluebox-body">
+                <table class="tableblue" cellpadding="9" cellspacing="1" width="1350px" align="center">
+                    <tr class="table-tr">
+                        <th class="table-th">Applicant Name</th>
+                        <th class="table-th">ED</th>
+                        <th class="table-th">WE</th>
+                        <th class="table-th">TS</th>
+                        <th class="table-th">IS</th>
+                        <th class="table-th">AS</th>
+                        <th class="table-th">DS</th>
+                        <th class="table-th">Vector Si</th>
+                    </tr>
+        
+                    <tr class="table-tr">
+                        <td>Garox</td>
+                        <td>1234</td>
+                        <td>1234</td>
+                        <td>1234</td>
+                        <td>1234</td>
+                        <td>1234</td>
+                        <td>1234</td>
+                        <td>5678</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+<!-- TABEL PERHITUNGAN Vi -->
+        <div class="bluebox">
+            <div class="bluebox-header">
+                <h3>Vi Calculation and Applicant Ranking</h3>
+            </div>
+            <div class="bluebox-body">
+                <table class="tableblue" cellpadding="9" cellspacing="1" width="1350px" align="center">
+                    <tr class="table-tr">
+                        <th class="table-th">Applicant Name</th>
+                        <th class="table-th">Vi</th>
+                        <th class="table-th">Rank</th>
+                    </tr>
+        
+                    <tr class="table-tr">
+                        <td>Garox</td>
+                        <td>123456</td>
+                        <td>1</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+<!-- KESIMPULAN -------------------------------------------------------------------------- -->
+        <div class="bluebox" id="conclude">
+            <div class="bluebox-header">
+                <h3>Conclussion</h3>
+            </div>
+            <div class="bluebox-body" id="paragraph">
+                <p>According to the calculations done by our sistem above, the applicant who will become new employees at ABC Foundation are :
+                    <br>
+                    <br>
+                    <br>
+                (ApplicantName) as the (rank) rank with a total Vi score of (Vi Score)!
+                <br>
+                (ApplicantName) as the (rank) rank with a total Vi score of (Vi Score)!
+                <br>
+                (ApplicantName) as the (rank) rank with a total Vi score of (Vi Score)!
+                <br>
+                <br>
+                <br>
+                Congratulations to the applicants above for they have been accepted as new employees for ABC Foundation.
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
