@@ -23,7 +23,7 @@
     }
 </style>
 <body>
-    <form class="form-group">
+    <form class="form-group" id="applicantForm" data-editing="false" data-editing-row="">
         <table class="table table-borderless">
             <tbody>
                 <tr>
@@ -75,7 +75,7 @@
                 <th>Total</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="applicantList">
             <!-- Rows will be added here -->
         </tbody>
     </table>
@@ -222,7 +222,7 @@
     const totalWj = sumWj();
     document.getElementById("totalwj").textContent = totalWj.toFixed(2);
 
-    document.querySelector('form').addEventListener('submit', function(event) {
+    document.getElementById('applicantForm').addEventListener('submit', function(event) {
         event.preventDefault();
 
         var name = document.querySelector('input[name="name"]').value;
@@ -235,54 +235,73 @@
 
         var total = parseInt(education) + parseInt(workExperience) + parseInt(technicalSkills) + parseInt(interpersonalSkills) + parseInt(analyticalSkills) + parseInt(discipline);
 
-        document.querySelector('form').reset();
+        var form = document.getElementById('applicantForm');
+        var editing = form.getAttribute('data-editing');
+        var editingRow = form.getAttribute('data-editing-row');
 
-        var tableBody = document.querySelector('.table-bordered tbody');
-        var newRow = tableBody.insertRow();
-        newRow.innerHTML = `
-            <td>
-                <button class="btn btn-primary btn-sm" onclick="editRow(this)">Edit</button>
-                <button class="btn btn-danger btn-sm" onclick="deleteRow(this)">Delete</button>
-            </td>
-            <td>${name}</td>
-            <td>${education}</td>
-            <td>${workExperience}</td>
-            <td>${technicalSkills}</td>
-            <td>${interpersonalSkills}</td>
-            <td>${analyticalSkills}</td>
-            <td>${discipline}</td>
-            <td>${total}</td>
-        `;
+        if (editing == 'true') {
+            var editingRowIndex = parseInt(form.getAttribute('data-editing-row'));
+            var tableBody = document.getElementById('applicantList');
+            var editingRow = tableBody.rows[editingRowIndex];
+            editingRow.cells[1].textContent = name;
+            editingRow.cells[2].textContent = education;
+            editingRow.cells[3].textContent = workExperience;
+            editingRow.cells[4].textContent = technicalSkills;
+            editingRow.cells[5].textContent = interpersonalSkills;
+            editingRow.cells[6].textContent = analyticalSkills;
+            editingRow.cells[7].textContent = discipline;
+            editingRow.cells[8].textContent = total;
 
-        var siVectorTable = document.getElementById("siVectorTable");
-        var siRow = siVectorTable.insertRow();
-        var siVector = (
-            Math.pow(education, wjEd) *
-            Math.pow(workExperience, wjWe) *
-            Math.pow(technicalSkills, wjTs) *
-            Math.pow(interpersonalSkills, wjIs) *
-            Math.pow(analyticalSkills, wjAs) *
-            Math.pow(discipline, wjDs)
-        ).toFixed(2);
+            var siVectorTable = document.getElementById("siVectorTable").rows[editingRowIndex + 1];
+            siVectorTable.cells[0].textContent = name;
+            siVectorTable.cells[1].textContent = Math.pow(education, wjEd).toFixed(2);
+            siVectorTable.cells[2].textContent = Math.pow(workExperience, wjWe).toFixed(2);
+            siVectorTable.cells[3].textContent = Math.pow(technicalSkills, wjTs).toFixed(2);
+            siVectorTable.cells[4].textContent = Math.pow(interpersonalSkills, wjIs).toFixed(2);
+            siVectorTable.cells[5].textContent = Math.pow(analyticalSkills, wjAs).toFixed(2);
+            siVectorTable.cells[6].textContent = Math.pow(discipline, wjDs).toFixed(2);
+            siVectorTable.cells[7].textContent = (
+                Math.pow(education, wjEd) *
+                Math.pow(workExperience, wjWe) *
+                Math.pow(technicalSkills, wjTs) *
+                Math.pow(interpersonalSkills, wjIs) *
+                Math.pow(analyticalSkills, wjAs) *
+                Math.pow(discipline, wjDs)
+            ).toFixed(2);
 
-        siRow.innerHTML = `
-            <td>${name}</td>
-            <td>${Math.pow(education, wjEd).toFixed(2)}</td>
-            <td>${Math.pow(workExperience, wjWe).toFixed(2)}</td>
-            <td>${Math.pow(technicalSkills, wjTs).toFixed(2)}</td>
-            <td>${Math.pow(interpersonalSkills, wjIs).toFixed(2)}</td>
-            <td>${Math.pow(analyticalSkills, wjAs).toFixed(2)}</td>
-            <td>${Math.pow(discipline, wjDs).toFixed(2)}</td>
-            <td>${siVector}</td>
-        `;
+            form.setAttribute('data-editing', 'false');
+            form.setAttribute('data-editing-row', '');
+        } else {
+            var tableBody = document.getElementById('applicantList');
+            var newRow = tableBody.insertRow();
+            newRow.innerHTML = `
+                <td>
+                    <button class="btn btn-primary btn-sm" onclick="editRow(this)">Edit</button>
+                    <button class="btn btn-danger btn-sm" onclick="deleteRow(this)">Delete</button>
+                </td>
+                <td>${name}</td>
+                <td>${education}</td>
+                <td>${workExperience}</td>
+                <td>${technicalSkills}</td>
+                <td>${interpersonalSkills}</td>
+                <td>${analyticalSkills}</td>
+                <td>${discipline}</td>
+                <td>${total}</td>
+            `;
 
-        calculateVi();
+            form.setAttribute('data-editing', 'false');
+            form.setAttribute('data-editing-row', '');
+        }
+
+        this.reset();
+
+        updateSiVectorAndViTable();
     });
 
     function deleteRow(button) {
         var row = button.closest('tr');
         row.remove();
-        calculateVi();
+        updateSiVectorAndViTable();
     }
 
     function editRow(button) {
@@ -305,22 +324,54 @@
         document.querySelector('input[name="analyticalSkills"]').value = analyticalSkills;
         document.querySelector('input[name="discipline"]').value = discipline;
 
-        row.remove();
+        var form = document.getElementById('applicantForm');
+        form.setAttribute('data-editing', 'true');
+        form.setAttribute('data-editing-row', row.rowIndex - 1);
     }
 
-    function calculateVi() {
-        const siVectorTable = document.getElementById("siVectorTable");
-        const viTable = document.getElementById("viTable");
-        const rows = siVectorTable.getElementsByTagName("tr");
+    function updateSiVectorAndViTable() {
+        var siVectorTable = document.getElementById("siVectorTable");
+        var tableBody = document.getElementById('applicantList');
+        var rows = tableBody.getElementsByTagName("tr");
+
+        siVectorTable.innerHTML = '';
 
         let totalSiVector = 0;
         const siVectors = [];
 
-        for (let i = 1; i < rows.length; i++) {
-            const cells = rows[i].getElementsByTagName("td");
-            const siVector = parseFloat(cells[cells.length - 1].textContent);
-            totalSiVector += siVector;
-            siVectors.push({ name: cells[0].textContent, siVector: siVector });
+        for (let i = 0; i < rows.length; i++) {
+            var cells = rows[i].getElementsByTagName("td");
+            var name = cells[1].textContent;
+            var education = parseInt(cells[2].textContent);
+            var workExperience = parseInt(cells[3].textContent);
+            var technicalSkills = parseInt(cells[4].textContent);
+            var interpersonalSkills = parseInt(cells[5].textContent);
+            var analyticalSkills = parseInt(cells[6].textContent);
+            var discipline = parseInt(cells[7].textContent);
+
+            var siVector = (
+                Math.pow(education, wjEd) *
+                Math.pow(workExperience, wjWe) *
+                Math.pow(technicalSkills, wjTs) *
+                Math.pow(interpersonalSkills, wjIs) *
+                Math.pow(analyticalSkills, wjAs) *
+                Math.pow(discipline, wjDs)
+            ).toFixed(2);
+
+            var newRow = siVectorTable.insertRow();
+            newRow.innerHTML = `
+                <td>${name}</td>
+                <td>${Math.pow(education, wjEd).toFixed(2)}</td>
+                <td>${Math.pow(workExperience, wjWe).toFixed(2)}</td>
+                <td>${Math.pow(technicalSkills, wjTs).toFixed(2)}</td>
+                <td>${Math.pow(interpersonalSkills, wjIs).toFixed(2)}</td>
+                <td>${Math.pow(analyticalSkills, wjAs).toFixed(2)}</td>
+                <td>${Math.pow(discipline, wjDs).toFixed(2)}</td>
+                <td>${siVector}</td>
+            `;
+
+            totalSiVector += parseFloat(siVector);
+            siVectors.push({ name: name, siVector: parseFloat(siVector) });
         }
 
         siVectors.forEach(applicant => {
@@ -329,9 +380,43 @@
 
         siVectors.sort((a, b) => b.vi - a.vi);
 
-        const viTableBody = viTable.getElementsByTagName('tbody')[0];
+        const viTableBody = document.getElementById('viTable').getElementsByTagName('tbody')[0];
         viTableBody.innerHTML = '';
 
+        siVectors.forEach((applicant, index) => {
+            var newRow = viTableBody.insertRow();
+            newRow.innerHTML = `
+                <td>${applicant.name}</td>
+                <td>${applicant.vi.toFixed(2)}</td>
+                <td>${index + 1}</td>
+            `;
+        });
+    }
+
+    function calculateVi() {
+        const siVectorTable = document.getElementById("siVectorTable");
+        const viTable = document.getElementById("viTable");
+        const rows = siVectorTable.getElementsByTagName("tr");
+    
+        let totalSiVector = 0;
+        const siVectors = [];
+    
+        for (let i = 1; i < rows.length; i++) {
+            const cells = rows[i].getElementsByTagName("td");
+            const siVector = parseFloat(cells[cells.length - 1].textContent);
+            totalSiVector += siVector;
+            siVectors.push({ name: cells[0].textContent, siVector: siVector });
+        }
+    
+        siVectors.forEach(applicant => {
+            applicant.vi = applicant.siVector / totalSiVector;
+        });
+    
+        siVectors.sort((a, b) => b.vi - a.vi);
+    
+        const viTableBody = viTable.getElementsByTagName('tbody')[0];
+        viTableBody.innerHTML = '';
+    
         siVectors.forEach((applicant, index) => {
             const newRow = viTableBody.insertRow();
             newRow.innerHTML = `
@@ -342,3 +427,4 @@
         });
     }
 </script>
+
