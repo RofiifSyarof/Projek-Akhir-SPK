@@ -421,12 +421,12 @@
 
                     applicants.push({
                         name: name,
-                        education: education,
-                        workExperience: workExperience,
-                        technicalSkills: technicalSkills,
-                        interpersonalSkills: interpersonalSkills,
-                        analyticalSkills: analyticalSkills,
-                        discipline: discipline,
+                        education: education ** educationWj,
+                        workExperience: workExperience ** workExperienceWj,
+                        technicalSkills: technicalSkills ** technicalSkillsWj,
+                        interpersonalSkills: interpersonalSkills ** interpersonalSkillsWj,
+                        analyticalSkills: analyticalSkills ** analyticalSkillsWj,
+                        discipline: discipline ** disciplineWj,
                         si: si,
                         vi: vi
                     });
@@ -445,12 +445,12 @@
     
                     row.innerHTML = `
                         <td>${applicant.name}</td>
-                        <td>${applicant.education}</td>
-                        <td>${applicant.workExperience}</td>
-                        <td>${applicant.technicalSkills}</td>
-                        <td>${applicant.interpersonalSkills}</td>
-                        <td>${applicant.analyticalSkills}</td>
-                        <td>${applicant.discipline}</td>
+                        <td>${applicant.education.toFixed(2)}</td>
+                        <td>${applicant.workExperience.toFixed(2)}</td>
+                        <td>${applicant.technicalSkills.toFixed(2)}</td>
+                        <td>${applicant.interpersonalSkills.toFixed(2)}</td>
+                        <td>${applicant.analyticalSkills.toFixed(2)}</td>
+                        <td>${applicant.discipline.toFixed(2)}</td>
                         <td>${applicant.si.toFixed(2)}</td>
                         <td>${applicant.vi.toFixed(2)}</td>
                         <td>${index + 1}</td>
