@@ -398,6 +398,8 @@
                 const wjValues = tableWj.querySelectorAll('tbody tr td:nth-child(3)');
     
                 const applicants = [];
+                //notes: nambah ini
+                let totalSi = 0;
     
                 rows.forEach(function (row) {
                     const cells = row.querySelectorAll('td');
@@ -417,7 +419,9 @@
                     const disciplineWj = parseFloat(wjValues[5].innerText);
     
                     const si = (education ** educationWj) * (workExperience ** workExperienceWj) * (technicalSkills ** technicalSkillsWj) * (interpersonalSkills ** interpersonalSkillsWj) * (analyticalSkills ** analyticalSkillsWj) * (discipline ** disciplineWj);
-                    const vi = si / 6;
+                    //notes: nambah ini
+                    totalSi += si;
+                    //const vi = si / 6;
 
                     applicants.push({
                         name: name,
@@ -427,9 +431,15 @@
                         interpersonalSkills: interpersonalSkills ** interpersonalSkillsWj,
                         analyticalSkills: analyticalSkills ** analyticalSkillsWj,
                         discipline: discipline ** disciplineWj,
-                        si: si,
-                        vi: vi
+                        si: si
+                        //vi: vi
                     });
+                });
+
+                //menghitung vi berdasarkan totalSi
+                //notes: nambah ini
+                applicants.forEach(function (applicant) {
+                    applicant.vi = applicant.si / totalSi;
                 });
     
                 // Sort the applicants based on their Vi score
