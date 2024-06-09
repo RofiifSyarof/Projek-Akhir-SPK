@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABC Foundation</title>
+    <link rel="stylesheet" href="styletest.css">
+</head>
+<body>
+    <div class="header">
+        <h3>Input Data</h3>
+    </div>
+
+    <div class="navbar">
+        <div class="navbar-header">
+            <div class="navbar-header-logo">
+                <img src="Logo1.png" height="40%" width="40%">
+            </div>
+            <h2>ABC Foundation</h2>
+        </div>
+        <form action="homepage.html">
+			<button class="navbar-menu-btn" name="Gohome">Home</button></a>
+		</form>
+        <form action="inputprocesstest.html">
+			<button class="navbar-menu-btn" name="Goinput">Input and Process Data</button></a>
+		</form>
+    </div>
+
+    <div class="main-body-input">
+
+<!-- FORM APPLICANTS --------------------------------------------------------------------- -->
+
+        <div class="main-formApp">
+            <div class="bluebox-formApp">
+                <div class="bluebox-header">
+                    <h3>Input Applicant's Data Assessment</h3>
+                </div>
+                
+                <div class="bluebox-body">
+                    <form id="applicantForm">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td><label class="form-label">Name</label></td>
+                                    <td><input type="text" class="form-field" name="name" placeholder="Applicant Name" pattern="[A-Za-z ]+" required></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td><label class="form-label">Education</label></td>
+                                    <td><input type="number" class="form-field" name="education" placeholder="Applicant Education Score" required></td>
+                                </tr>
+                
+                                <tr>
+                                    <td><label class="form-label">Work Experience</label></td>
+                                    <td><input type="number" class="form-field" name="workExperience" placeholder="Applicant Work Experience Score" required></td>
+                                </tr>
+                
+                                <tr>
+                                    <td><label class="form-label">Technical Skills</label></td>
+                                    <td><input type="number" class="form-field" name="technicalSkills" placeholder="Applicant Technical Skills Score" required></td>
+                                </tr>
+                
+                                <tr>
+                                    <td><label class="form-label">Interpersonal Skills</label></td>
+                                    <td><input type="number" class="form-field" name="interpersonalSkills" placeholder="Applicant Interpersonal Skills Score" required></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="form-label">Analytical Skills</label></td>
+                                    <td><input type="number" class="form-field" name="analyticalSkills" placeholder="Applicant Analytical Skills Score" required></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="form-label">Discipline</label></td>
+                                    <td><input type="number" class="form-field" name="discipline" placeholder="Applicant Discipline Score" required></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- Tombol Submit -->
+                        <button type="submit" class="SubmitBtn">Submit</button>
+                    </form>    
+                </div>
+            </div>
+        </div>
+
+<!-- FORM CRITERIA WEIGHT --------------------------------------------------------------------- -->
+
+    <div class="main-formCrit">
+        <div class="bluebox-formCrit">
+            <div class="bluebox-header">
+                <h3>Input Criteria Weight</h3>
+            </div>
+
+            <div class="bluebox-body">
+                <form id="applicantForm">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td><label class="form-label">Education</label></td>
+                                <td><input type="number" class="form-field" name="education" placeholder="Enter Weight" required></td>
+                            </tr>
+            
+                            <tr>
+                                <td><label class="form-label">Work Experience</label></td>
+                                <td><input type="number" class="form-field" name="workExperience" placeholder="Enter Weight" required></td>
+                            </tr>
+            
+                            <tr>
+                                <td><label class="form-label">Technical Skills</label></td>
+                                <td><input type="number" class="form-field" name="technicalSkills" placeholder="Enter Weight" required></td>
+                            </tr>
+            
+                            <tr>
+                                <td><label class="form-label">Interpersonal Skills</label></td>
+                                <td><input type="number" class="form-field" name="interpersonalSkills" placeholder="Enter Weight" required></td>
+                            </tr>
+                            <tr>
+                                <td><label class="form-label">Analytical Skills</label></td>
+                                <td><input type="number" class="form-field" name="analyticalSkills" placeholder="Enter Weight" required></td>
+                            </tr>
+                            <tr>
+                                <td><label class="form-label">Discipline</label></td>
+                                <td><input type="number" class="form-field" name="discipline" placeholder="Enter Weight" required></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- Tombol Submit -->
+                    <button type="submit" class="SubmitBtn">Submit</button>
+                </form>    
+            </div>
+        </div>
+    </div>
+
+<!-- APPLICANT LIST TABLE ---------------------------------------------------------------- -->
+    <div class="main-content">
+        <div class="bluebox">
+            <div class="bluebox-header">
+                <h3>List of Applicants</h3>
+            </div>
+            <div class="bluebox-body">
+                <table cellpadding="9" cellspacing="1" width="100%" align="center">
+                    <thead class="table-th">
+                        <tr>
+                            <th>Menu</th>
+                            <th>Applicant Name</th>
+                            <th>ED</th>
+                            <th>WE</th>
+                            <th>TS</th>
+                            <th>IS</th>
+                            <th>AS</th>
+                            <th>DS</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody class="table-tr" id="applicantList">
+                        <!-- Rows will be added here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+<!-- CRITERIA WEIGHT Wj CALCULTAION TABLE --------------------------------------------------------------- -->
+        <div class="bluebox">
+            <div class="bluebox-header">
+                <h3>Criteria Weight Information</h3>
+            </div>
+            <div class="bluebox-body">
+                <table cellpadding="9" cellspacing="1" width="100%" align="center">
+                    <thead class="table-th">
+                        <tr>
+                            <th>Criteria</th>
+                            <th>Criteria Weight</th>
+                            <th>Wj</th>
+                            <th>Cost/Benefit</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <tr class="table-td">
+                            <td>Education (ED)</td>
+                            <td>
+
+                            </td>
+                            <td>
+                                <!-- Wj goes here -->
+                            </td>
+                            <td>Benefit</td>
+                        </tr>
+                        <tr class="table-td">
+                            <td>Work Experience (WE)</td>
+                            <td>
+
+                            </td>
+                            <td>
+                                <!-- Wj goes here -->
+                            </td>
+                            <td>Benefit</td>
+                        </tr>
+                        <tr class="table-td">
+                            <td>Technical Skills (TS)</td>
+                            <td>
+
+                            </td>
+                            <td>
+                                <!-- Wj goes here -->
+                            </td>
+                            <td>Benefit</td>
+                        </tr>
+                        <tr class="table-td">
+                            <td>Interpersonal Skills (IS)</td>
+                            <td>
+
+                            </td>
+                            <td>
+                                <!-- Wj goes here -->
+                            </td>
+                            <td>Benefit</td>
+                        </tr>
+                        <tr class="table-td">
+                            <td>Analytical Skills (AS)</td>
+                            <td>
+
+                            </td>
+                            <td>
+                                <!-- Wj goes here -->
+                            </td>
+                            <td>Benefit</td>
+                        </tr>
+                        <tr class="table-td">
+                            <td>Discipline (DS)</td>
+                            <td>
+
+                            </td>
+                            <td>
+                                <!-- Wj goes here -->
+                            </td>
+                            <td>Benefit</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="totalweightwj">
+                    <h4>Total Criteria Weight : <!-- Total Criteria Weight Goes Here --> </h4>
+                    <h4>Total Wj : <!-- Total Wj Goes Here --> </span></h4>
+                </div>
+            </div>
+        </div>
+
+<!-- SI VECTOR CALCULATION TABLE --------------------------------------------------------- -->
+        <div class="bluebox">
+            <div class="bluebox-header">
+                <h3>Si Vector and Vi Score Calculation</h3>
+            </div>
+            <div class="bluebox-body">
+                <table cellpadding="9" cellspacing="1" width="100%" align="center">
+                    <thead class="table-th">
+                        <tr>
+                            <th>Applicant Name</th>
+                            <th>ED</th>
+                            <th>WE</th>
+                            <th>TS</th>
+                            <th>IS</th>
+                            <th>AS</th>
+                            <th>DS</th>
+                            <th>Si Vector</th>
+                            <th>Vi</th>
+                            <th>Ranking</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody class="table-td" id="siTable">
+                        <!-- Rows will be added here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+<!-- CONCLUSION -------------------------------------------------------------------------- -->
+        <div class="bluebox" id="conclude">
+            <div class="bluebox-header">
+                <h3>Conclussion</h3>
+            </div>
+            <div class="bluebox-body" id="paragraph">
+                <h4>According to the calculations done by our sistem above, the applicant who will become new employees at ABC Foundation are :</h4>
+                    <br>
+                <h4>(ApplicantName) as the (rank) rank with a total Vi score of (Vi Score)!</h4>
+                <h4>(ApplicantName) as the (rank) rank with a total Vi score of (Vi Score)!</h4>
+                <h4>(ApplicantName) as the (rank) rank with a total Vi score of (Vi Score)!</h4>
+                <br>
+                <h4>Congratulations to the applicants above for they have been accepted as new employees for ABC Foundation.</h4>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
