@@ -279,13 +279,7 @@
                 <h3>Conclussion</h3>
             </div>
             <div class="bluebox-body" id="paragraph">
-                <h4>According to the calculations done by our sistem above, the applicant who will become new employees at ABC Foundation are :</h4>
-                    <br>
-                <h4>(ApplicantName) as the (rank) rank with a total Vi score of (Vi Score)!</h4>
-                <h4>(ApplicantName) as the (rank) rank with a total Vi score of (Vi Score)!</h4>
-                <h4>(ApplicantName) as the (rank) rank with a total Vi score of (Vi Score)!</h4>
-                <br>
-                <h4>Congratulations to the applicants above for they have been accepted as new employees for ABC Foundation.</h4>
+                <!-- Conclusion will be added here -->
             </div>
         </div>
     </div>
@@ -392,4 +386,108 @@
             totalWjDisplay.innerText = `Total Wj : ${(educationWj + workExperienceWj + technicalSkillsWj + interpersonalSkillsWj + analyticalSkillsWj + disciplineWj).toFixed(2)}`;
         });
     });
+
+// Si Vector and Vi Score Calculation 
+        document.addEventListener('DOMContentLoaded', function () {
+            const applicantList = document.getElementById('applicantList');
+            const tableWj = document.getElementById('tableWj');
+            const siTable = document.getElementById('siTable');
+    
+            const calculateSiVi = function () {
+                const rows = applicantList.querySelectorAll('tbody tr');
+                const wjValues = tableWj.querySelectorAll('tbody tr td:nth-child(3)');
+    
+                const applicants = [];
+    
+                rows.forEach(function (row) {
+                    const cells = row.querySelectorAll('td');
+                    const name = cells[1].innerText;
+                    const education = parseFloat(cells[2].innerText);
+                    const workExperience = parseFloat(cells[3].innerText);
+                    const technicalSkills = parseFloat(cells[4].innerText);
+                    const interpersonalSkills = parseFloat(cells[5].innerText);
+                    const analyticalSkills = parseFloat(cells[6].innerText);
+                    const discipline = parseFloat(cells[7].innerText);
+    
+                    const educationWj = parseFloat(wjValues[0].innerText);
+                    const workExperienceWj = parseFloat(wjValues[1].innerText);
+                    const technicalSkillsWj = parseFloat(wjValues[2].innerText);
+                    const interpersonalSkillsWj = parseFloat(wjValues[3].innerText);
+                    const analyticalSkillsWj = parseFloat(wjValues[4].innerText);
+                    const disciplineWj = parseFloat(wjValues[5].innerText);
+    
+                    const si = (education ** educationWj) * (workExperience ** workExperienceWj) * (technicalSkills ** technicalSkillsWj) * (interpersonalSkills ** interpersonalSkillsWj) * (analyticalSkills ** analyticalSkillsWj) * (discipline ** disciplineWj);
+                    const vi = si / 6;
+
+                    applicants.push({
+                        name: name,
+                        education: education,
+                        workExperience: workExperience,
+                        technicalSkills: technicalSkills,
+                        interpersonalSkills: interpersonalSkills,
+                        analyticalSkills: analyticalSkills,
+                        discipline: discipline,
+                        si: si,
+                        vi: vi
+                    });
+                });
+    
+                // Sort the applicants based on their Vi score
+                applicants.sort(function (a, b) {
+                    return b.vi - a.vi;
+                });
+    
+                // Display the applicants in the table
+                siTable.innerHTML = '';
+    
+                applicants.forEach(function (applicant, index) {
+                    const row = document.createElement('tr');
+    
+                    row.innerHTML = `
+                        <td>${applicant.name}</td>
+                        <td>${applicant.education}</td>
+                        <td>${applicant.workExperience}</td>
+                        <td>${applicant.technicalSkills}</td>
+                        <td>${applicant.interpersonalSkills}</td>
+                        <td>${applicant.analyticalSkills}</td>
+                        <td>${applicant.discipline}</td>
+                        <td>${applicant.si.toFixed(2)}</td>
+                        <td>${applicant.vi.toFixed(2)}</td>
+                        <td>${index + 1}</td>
+                    `;
+
+                    siTable.appendChild(row);
+                });
+            };
+
+            document.getElementById('criteriaForm').addEventListener('submit', calculateSiVi);
+            document.getElementById('applicantForm').addEventListener('submit', calculateSiVi);
+        });
+
+// Conclusion
+    
+        document.addEventListener('DOMContentLoaded', function () {
+            const conclude = document.getElementById('conclude');
+            const paragraph = document.getElementById('paragraph');
+            const siTable = document.getElementById('siTable');
+    
+            const displayConclusion = function () {
+                const rows = siTable.querySelectorAll('tbody tr');
+                const bestApplicant = rows[0].querySelectorAll('td');
+    
+                paragraph.innerHTML = `
+                    <h4>According to the calculations done by our sistem above, the applicant who will become new employees at ABC Foundation are :</h4>
+                        <br>
+                    <h4>${bestApplicant[0].innerText} as the ${bestApplicant[9].innerText} rank with a total Vi score of ${bestApplicant[8].innerText}!</h4>
+                    <br>
+                    <h4>Congratulations to the applicant above for they have been accepted as new employees for ABC Foundation.</h4>
+                `;
+            };
+    
+            document.getElementById('criteriaForm').addEventListener('submit', displayConclusion);
+            document.getElementById('applicantForm').addEventListener('submit', displayConclusion);
+        });
+
+//Duplicate name checker
+
 </script>
