@@ -223,7 +223,7 @@ body {
 }
 .table-th:hover{
 	background-color: rgb(5,28,94,1);
-    transform: scale(1.01);
+    transform: scale(1.0);
     transition: 0.5s;
 }
 .table-td {
