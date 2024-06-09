@@ -90,7 +90,7 @@
             </div>
 
             <div class="bluebox-body">
-                <form id="applicantForm">
+                <form id="criteriaForm">
                     <table>
                         <tbody>
                             <tr>
@@ -136,7 +136,7 @@
                 <h3>List of Applicants</h3>
             </div>
             <div class="bluebox-body">
-                <table cellpadding="9" cellspacing="1" width="100%" align="center">
+                <table id="applicantList" cellpadding="9" cellspacing="1" width="100%" align="center">
                     <thead class="table-th">
                         <tr>
                             <th>Menu</th>
@@ -164,7 +164,7 @@
                 <h3>Criteria Weight Information</h3>
             </div>
             <div class="bluebox-body">
-                <table cellpadding="9" cellspacing="1" width="100%" align="center">
+                <table id="tableWj" cellpadding="9" cellspacing="1" width="100%" align="center">
                     <thead class="table-th">
                         <tr>
                             <th>Criteria</th>
@@ -250,7 +250,7 @@
                 <h3>Si Vector and Vi Score Calculation</h3>
             </div>
             <div class="bluebox-body">
-                <table cellpadding="9" cellspacing="1" width="100%" align="center">
+                <table id="tableSiVi" cellpadding="9" cellspacing="1" width="100%" align="center">
                     <thead class="table-th">
                         <tr>
                             <th>Applicant Name</th>
@@ -291,3 +291,105 @@
     </div>
 </body>
 </html>
+
+<!-- JAVASCRIPT/BACKEND -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const applicantForm = document.getElementById('applicantForm');
+        const applicantList = document.getElementById('applicantList');
+        const criteriaForm = document.getElementById('criteriaForm');
+        const tableWj = document.getElementById('tableWj');
+        
+// applicationForm
+        applicantForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            
+            const name = applicantForm.name.value;
+            const education = parseFloat(applicantForm.education.value);
+            const workExperience = parseFloat(applicantForm.workExperience.value);
+            const technicalSkills = parseFloat(applicantForm.technicalSkills.value);
+            const interpersonalSkills = parseFloat(applicantForm.interpersonalSkills.value);
+            const analyticalSkills = parseFloat(applicantForm.analyticalSkills.value);
+            const discipline = parseFloat(applicantForm.discipline.value);
+
+            const total = education + workExperience + technicalSkills + interpersonalSkills + analyticalSkills + discipline;
+
+            const row = document.createElement('tbody');
+
+            row.innerHTML = `
+                <tr class="table-td">
+                    <td><button class="deleteBtn">Delete</button></td>
+                    <td>${name}</td>
+                    <td>${education}</td>
+                    <td>${workExperience}</td>
+                    <td>${technicalSkills}</td>
+                    <td>${interpersonalSkills}</td>
+                    <td>${analyticalSkills}</td>
+                    <td>${discipline}</td>
+                    <td>${total}</td>
+                </tr>
+            `;
+
+            applicantList.appendChild(row);
+
+            applicantForm.reset();
+
+            row.querySelector('button').addEventListener('click', function () {
+                applicantList.removeChild(row);
+            });
+        });
+
+// criteriaForm
+
+        criteriaForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Get the input values from the form
+            const education = parseFloat(criteriaForm.education.value);
+            const workExperience = parseFloat(criteriaForm.workExperience.value);
+            const technicalSkills = parseFloat(criteriaForm.technicalSkills.value);
+            const interpersonalSkills = parseFloat(criteriaForm.interpersonalSkills.value);
+            const analyticalSkills = parseFloat(criteriaForm.analyticalSkills.value);
+            const discipline = parseFloat(criteriaForm.discipline.value);
+
+            // Calculate total weight
+            const totalWeight = education + workExperience + technicalSkills + interpersonalSkills + analyticalSkills + discipline;
+
+            // Calculate Wj for each criteria
+            const educationWj = education / totalWeight;
+            const workExperienceWj = workExperience / totalWeight;
+            const technicalSkillsWj = technicalSkills / totalWeight;
+            const interpersonalSkillsWj = interpersonalSkills / totalWeight;
+            const analyticalSkillsWj = analyticalSkills / totalWeight;
+            const disciplineWj = discipline / totalWeight;
+
+            // Insert the weights and Wj values into the table
+            const rows = tableWj.querySelectorAll('tbody tr');
+
+            rows[0].children[1].innerText = education;
+            rows[0].children[2].innerText = educationWj.toFixed(2);
+
+            rows[1].children[1].innerText = workExperience;
+            rows[1].children[2].innerText = workExperienceWj.toFixed(2);
+
+            rows[2].children[1].innerText = technicalSkills;
+            rows[2].children[2].innerText = technicalSkillsWj.toFixed(2);
+
+            rows[3].children[1].innerText = interpersonalSkills;
+            rows[3].children[2].innerText = interpersonalSkillsWj.toFixed(2);
+
+            rows[4].children[1].innerText = analyticalSkills;
+            rows[4].children[2].innerText = analyticalSkillsWj.toFixed(2);
+
+            rows[5].children[1].innerText = discipline;
+            rows[5].children[2].innerText = disciplineWj.toFixed(2);
+
+            // Display total weight and total Wj
+            const totalWeightDisplay = document.querySelector('.totalweightwj h4:first-child');
+            const totalWjDisplay = document.querySelector('.totalweightwj h4:last-child');
+
+            totalWeightDisplay.innerText = `Total Criteria Weight : ${totalWeight}`;
+            totalWjDisplay.innerText = `Total Wj : ${(educationWj + workExperienceWj + technicalSkillsWj + interpersonalSkillsWj + analyticalSkillsWj + disciplineWj).toFixed(2)}`;
+        });
+    });
+</script>
