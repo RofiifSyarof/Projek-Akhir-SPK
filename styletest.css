@@ -1,0 +1,285 @@
+/* BODY CONTAINER ------------------------------------------------------------------------------ */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 18% 1fr;
+    grid-template-rows: 60px 1fr;
+    background-color: lightgray;
+}
+/* HEADER -------------------------------------------------------------------------------------- */
+.header {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    background: url('DarkBlue.png');
+    background-size: cover;
+    background-position: center;
+    padding-left: 30px;
+    color: white;
+}
+
+/* NAVBAR -------------------------------------------------------------------------------------- */
+.navbar {
+    width: 100%;
+    background-color: #1e4b68;
+    color: white;
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+}
+.navbar-header {
+    padding: 27px;
+    text-align: justify;
+    background: url('DarkBlue.png');
+    background-size: cover;
+    background-position: center;
+}
+.navbar-header-logo {
+    padding-top: 10px;
+}
+
+.navbar-menu-btn  {
+    font-size:large;
+    color: white;
+    background-color: rgba(30,75,104,0.4);
+    padding-left: 30px;
+    text-align: justify;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+    border: 0px;
+}
+.navbar-menu-btn:hover  {
+    background-color: rgba(11,132,145);
+	transform: scale(1);
+    transition: 0.5s;
+}
+
+/* MAIN CONTENT AND ITS VERY OWN GRID LAYOUT --------------------------------------------------- */
+.main-body-home {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    color: white;
+    text-align: justify;
+    
+}
+.main-body-input {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    color: white;
+    text-align: justify;
+
+    /* GRID LAYOUT FOR MAIN */
+    display: grid;
+    grid-template-columns: 1fr, 1fr;
+    grid-template-rows: 1fr, 1fr;
+    grid-template-areas:
+        "m1 m2"
+        "m3 m3"
+    ;
+}
+.main-formApp {
+    grid-area: m1;
+}
+.main-formCrit {
+    grid-area: m2;
+}
+.main-content {
+    grid-area: m3;
+}
+.subheader {
+    background: url(LightBlue.png);
+    background-size: cover;
+    background-position: center;
+    padding-left: 30px;
+    color: white;
+    height: 60px;
+    line-height: 60px;
+}
+
+/* BLUEBOX UNIVERSAL (CONTENT) ----------------------------------------------------------------- */
+.bluebox {
+    margin: auto;
+    margin-top: 30px;
+    width: 95%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+}
+.bluebox:hover {
+    transform: scale(1.02);
+    transition: 0.5s;
+}
+#conclude {
+    margin-bottom: 35px;
+}
+.bluebox-header {
+    line-height: 60px;
+    height: 60px;
+    color: white;
+    padding-left: 30px;
+    background: url(LightBlue.png);
+    background-size: cover;
+    background-position: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.bluebox-body {
+    background-color: #185c75;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+#paragraph {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+/* BLUEBOX FOR APPLICANT FORM ------------------------------------------------------------------ */
+.bluebox-formApp {
+    margin-left: 5%;
+    margin-top: 30px;
+    width: 92%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+}
+.bluebox-formApp:hover {
+    transform: scale(1.02);
+    transition: 0.5s;
+}
+/* BLUEBOX FOR CRITERIA FORM */
+
+.bluebox-formCrit {
+    margin-left: 2%;
+    margin-top: 30px;
+    width: 92%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+}
+.bluebox-formCrit:hover {
+    transform: scale(1.02);
+    transition: 0.5s;
+}
+
+/* FORM FIELD AND FORM LABEL STYLING ---------------------------------------------------------- -*/
+.form-label {
+    font-size: 18px;
+    padding-right: 60px;
+}
+.form-field {
+	width: 100%;
+	height: 40px;
+	font-size: 18px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+	padding-left: 10px;
+	background-color: lightgray;
+	color: black;
+	border: 0px;
+}
+/* .form-field-applicant {
+	width: 100%;
+	height: 40px;
+	font-size: 18px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+	padding-left: 10px;
+	background-color: lightgray;
+	color: black;
+	border: 0px;
+}
+.form-field-criteria {
+	width: 60%;
+	height: 40px;
+	font-size: 18px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+	padding-left: 10px;
+	background-color: lightgray;
+	color: black;
+	border: 0px;
+} */
+.SubmitBtn {
+    margin-top: 20px;
+	width: 200px;
+	font-size: 19px;
+	font-weight: bold;
+	border-radius: 8px;
+	height: 50px;
+	color: white;
+	background-color: #223d5e;
+    border: 0px;
+}
+.SubmitBtn:hover {
+    background-color: rgba(11,132,145);
+	transform: scale(1);
+    transition: 0.3s;
+}
+.totalweightwj {
+    height: 50px;
+    color: white;
+    background-color: #185c75;
+    padding-left: 20px;
+    padding-bottom: 10px;
+}
+/* TABEL CSS ----------------------------------------------------------------------------- */
+
+.table-th {
+	background-color: rgb(5,28,94,0.6);
+}
+.table-th:hover{
+	background-color: rgb(5,28,94,1);
+    transform: scale(1.01);
+    transition: 0.5s;
+}
+.table-td {
+    background-color: rgba(221, 221, 221, 0.6);
+}
+.table-td:hover {
+	background-color: rgba(221, 221, 221, 0.8);
+    transform: scale(1.0);
+    transition: 0.5s;
+}
+.menubtn {
+	background-color: rgb(5,28,94,0.8);
+	width: 60px;
+	height: 27px;
+	margin-bottom: 3px;
+	border-radius: 4px;
+	font-size: 15px;
+	color: whitesmoke;
+    border: 0px;
+}
+.menubtn:hover {
+	background-color: rgb(5,28,94,1);
+	transform: scale(1.01);
+    transition: 0.5s;
+}
+
+/* TABLE BORDERS -------------------------------------------------------------------------- */
+
+/* TABLE BORDER FOR HEADER */
+tr:first-child th:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+tr:first-child th:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+/* TABLE BORDER FOR BODY FIRST ROW */
+tr:first-child td:first-child {
+    border-top-left-radius: 10px;
+}
+tr:first-child td:last-child {
+    border-top-right-radius: 10px;
+}
+/* TABLE BORDER FOR LAST ROW */
+tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
